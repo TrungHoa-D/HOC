@@ -1,0 +1,16 @@
+CREATE TABLE PERSONAL_INFOR (person_id int(10) NOT NULL AUTO_INCREMENT, person_name varchar(255), person_gen varchar(255), person_handle varchar(255), person_student_code varchar(255), person_phone int(10), person_group int(10), person_score int(10), person_avaiable_score int(10), note varchar(255), user_id int(10) NOT NULL, team_id int(10) NOT NULL, PRIMARY KEY (person_id));
+CREATE TABLE TEAM (team_id int(10) NOT NULL AUTO_INCREMENT, team_name varchar(255), team_member_id int(10), team_create_at timestamp NULL, PRIMARY KEY (team_id));
+CREATE TABLE CONTEST (contest_id int(10) NOT NULL AUTO_INCREMENT, contest_name varchar(255), contest_target varchar(255), contest_type varchar(255), contest_day date, contest_place int(10), contest_team_id int(10), contest_personal_id int(10), PRIMARY KEY (contest_id));
+CREATE TABLE CLASS (class_id int(10) NOT NULL AUTO_INCREMENT, class_name varchar(255), class_content varchar(255), class_day date, class_place varchar(255), PRIMARY KEY (class_id));
+CREATE TABLE `USER` (user_id int(10) NOT NULL AUTO_INCREMENT, user_name varchar(255), user_password varchar(255), user_role varchar(255), account_create_at timestamp NULL, PRIMARY KEY (user_id));
+CREATE TABLE ATTEND_CLASS (person_id int(10) NOT NULL, class_id int(10) NOT NULL, PRIMARY KEY (person_id, class_id));
+CREATE TABLE PERSON_DO_CONTEST (contest_id int(10) NOT NULL, person_id int(10) NOT NULL, PRIMARY KEY (contest_id, person_id));
+CREATE TABLE TEAM_DO_CONTEST (contest_id int(10) NOT NULL, team_id int(10) NOT NULL, PRIMARY KEY (contest_id, team_id));
+ALTER TABLE PERSONAL_INFOR ADD CONSTRAINT FKPERSONAL_I121418 FOREIGN KEY (user_id) REFERENCES `USER` (user_id);
+ALTER TABLE ATTEND_CLASS ADD CONSTRAINT FKATTEND_CLA316865 FOREIGN KEY (person_id) REFERENCES PERSONAL_INFOR (person_id);
+ALTER TABLE ATTEND_CLASS ADD CONSTRAINT FKATTEND_CLA148257 FOREIGN KEY (class_id) REFERENCES CLASS (class_id);
+ALTER TABLE PERSONAL_INFOR ADD CONSTRAINT FKPERSONAL_I494546 FOREIGN KEY (team_id) REFERENCES TEAM (team_id);
+ALTER TABLE PERSON_DO_CONTEST ADD CONSTRAINT FKPERSON_DO_433197 FOREIGN KEY (contest_id) REFERENCES CONTEST (contest_id);
+ALTER TABLE PERSON_DO_CONTEST ADD CONSTRAINT FKPERSON_DO_484594 FOREIGN KEY (person_id) REFERENCES PERSONAL_INFOR (person_id);
+ALTER TABLE TEAM_DO_CONTEST ADD CONSTRAINT FKTEAM_DO_CO428886 FOREIGN KEY (contest_id) REFERENCES CONTEST (contest_id);
+ALTER TABLE TEAM_DO_CONTEST ADD CONSTRAINT FKTEAM_DO_CO651698 FOREIGN KEY (team_id) REFERENCES TEAM (team_id);

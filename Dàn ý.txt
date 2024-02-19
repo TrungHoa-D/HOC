@@ -1,0 +1,37 @@
+1.Home
+- Đăng nhập
+- Đăng ký
+- Quên mật khẩu
+- Thoát
+2.Đăng nhập
+3.Đăng ký
+4. Menu Admin
+- Quản lý tài khoản
+- Quản lý thành viên
+- Quản lý hỗ trợ viên
+- Quản lý đội nhóm
+- Quản lý lớp học
+- Quản lý cuộc thi
+4.1. Quản lý tài khoản
+- Xem thông tin tài khoản
+- Đổi mật khẩu
+4.2. Quản lý thành viên
+- hiển thị danh sách thành viên
+- thêm thành viên mới
+- cập nhật thông tin thành viên
+- xóa thành viên
+4.3. Quản lý hỗ trợ viên
+- hiển thị danh sách hỗ trợ viên
+- thêm hỗ trợ viên mới
+- cập nhật thông tin hỗ trợ viên
+- xóa hỗ trợ viên
+4.4. Quản lý lớp học
+- hiển thị danh sách lớp học
+- tạo lớp học mới
+- cập nhật thông tin lớp học
+- hủy lớp học
+4.5. Quản lý cuộc thi
+- hiển thị danh sách cuộc thi
+- tạo cuộc thi mới
+- cập nhật thông tin cuộc thi
+- hủy cuộc thi
