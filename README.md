@@ -1,1 +1,1 @@
-# HOC
+# Hà Nam Olympic Class - Management
