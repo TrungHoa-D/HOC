@@ -74,6 +74,19 @@ public class ContestDAO {
         return list;
     }
     public void showTop3(String name) throws SQLException{
+        {
+            List<Contest> contests = new ArrayList<>();
+            boolean right =false;
+            contests=find(name);
+            for(Contest c : contests) {
+                right=true;
+                break;
+            }
+            if (!right) {
+                System.out.println(" Cuộc thi không tồn tại !!!");
+                return;
+            }
+        }
         String sql = "SELECT TOP (3) PERSONAL_INFOR.person_name AS name, PERSONAL_INFOR.person_handle AS handle, PERSONAL_INFOR.person_group AS [group], PERSON_DO_CONTEST.score\n" +
                 "FROM     PERSONAL_INFOR INNER JOIN\n" +
                 "                  PERSON_DO_CONTEST ON PERSONAL_INFOR.person_id = PERSON_DO_CONTEST.person_id INNER JOIN\n" +
