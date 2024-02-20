@@ -89,4 +89,19 @@ public class ContestDAO {
         }
         ps.close();rs.close();
     }
+    public void showContest(int id) throws SQLException{
+        String sql = "SELECT CONTEST.contest_name, PERSON_DO_CONTEST.score\n" +
+                "FROM     PERSON_DO_CONTEST INNER JOIN\n" +
+                "                  CONTEST ON PERSON_DO_CONTEST.contest_id = CONTEST.contest_id\n" +
+                "WHERE  (PERSON_DO_CONTEST.person_id = ?)";
+        PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
+        ps.setInt(1,id);
+        ResultSet rs = ps.executeQuery();
+        System.out.println("               ═════════ DANH SÁCH CUỘC THI ĐÃ THAM GIA ═════════");
+        System.out.printf("%-50s%-20s\n","Tên cuộc thi","Điểm đạt được");
+        while(rs.next()) {
+            System.out.printf("%-50s%-20d\n",rs.getString("contest_name"),rs.getInt("score"));
+        }
+        ps.close();rs.close();
+    }
 }

@@ -28,7 +28,10 @@ public class Account {
         name=sc.nextLine();
         System.out.print(" Nhập mật khẩu: ");
         password=sc.nextLine();
-        role="student";
+        if(admin){
+            System.out.print(" Nhập vai trò: ");
+            role=sc.nextLine();
+        }
     }
     public Account(int id, String name, String password, String role) {
         this.id = id;
