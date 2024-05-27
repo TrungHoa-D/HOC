@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Contest {
     private static int nextID=7000;
-    private int id;
+    private Integer id;
     private String name;
     private String target;
     private String type;
@@ -16,7 +16,7 @@ public class Contest {
         nextID++;
     }
 
-    public Contest(int id, String name, String target, String type, java.sql.Date day) {
+    public Contest(Integer id, String name, String target, String type, java.sql.Date day) {
         this.id = id;
         this.name = name;
         this.target = target;
@@ -42,11 +42,11 @@ public class Contest {
 //        System.out.printf("%-5s%-50s%-20s%-10s%-20s\n","ID","Tên","Mục tiêu","Thể loại","Ngày tổ chức");
         System.out.printf("%-5d%-50s%-20s%-10s%-20s\n",this.getId(), this.getName(), this.getTarget(), this.getType(), this.getDay().toString());
     }
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

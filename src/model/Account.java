@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Account {
-    private static int nextId = 5001;
-    private int id;
+    private static int nextId = 5300;
+    private Integer id;
     private String name;
     private String password;
     private String role;
@@ -33,16 +33,16 @@ public class Account {
             role=sc.nextLine();
         }
     }
-    public Account(int id, String name, String password, String role) {
+    public Account(Integer id, String name, String password, String role) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.role = role;
     }
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id=id;
     }
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
