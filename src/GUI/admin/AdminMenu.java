@@ -1,7 +1,10 @@
 package GUI.admin;
 
+import GUI.contestManager.ContestMenu;
+import GUI.courseManager.CourseManagerMenu;
 import GUI.home.Home;
-import GUI.studentManger.StudentManagerMenu;
+import GUI.studentManager.StudentManagerMenu;
+import GUI.supporterManager.SupManagerMenu;
 import main.MainFunction;
 import model.Account;
 import model.Person;
@@ -57,6 +60,24 @@ public class AdminMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 StudentManagerMenu.stuManagerMenu(frame,account);
+            }
+        });
+        supporterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SupManagerMenu.supporterManagerMenu(frame,account);
+            }
+        });
+        classButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CourseManagerMenu.courseMenu(frame,account);
+            }
+        });
+        contestButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ContestMenu.contestMenu(frame,account);
             }
         });
     }

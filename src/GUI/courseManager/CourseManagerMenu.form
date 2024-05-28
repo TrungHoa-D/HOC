@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.studentManger.StudentManagerMenu">
-  <grid id="27dc6" binding="stuManagerMenuPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.courseManager.CourseManagerMenu">
+  <grid id="27dc6" binding="CoManagerMenuPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="16" left="16" bottom="16" right="16"/>
     <constraints>
-      <xy x="20" y="20" width="665" height="619"/>
+      <xy x="20" y="20" width="568" height="469"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <component id="8b114" class="javax.swing.JLabel" binding="nameLabel">
+      <component id="429bd" class="javax.swing.JLabel" binding="nameLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font size="36"/>
-          <text value="QUẢN LÝ SINH VIÊN"/>
+          <text value="QUẢN LÝ LỚP HỌC"/>
         </properties>
       </component>
-      <grid id="a9e3b" binding="optionPanel" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="764bc" binding="optionPanel" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="16" left="16" bottom="16" right="16"/>
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -25,7 +25,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="cfadd" class="javax.swing.JButton" binding="showButton">
+          <component id="9f48f" class="javax.swing.JButton" binding="showButton">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -34,35 +34,35 @@
               <text value="Hiển thị danh sách"/>
             </properties>
           </component>
-          <component id="c19d4" class="javax.swing.JButton" binding="addButton">
+          <component id="d21b3" class="javax.swing.JButton" binding="addButton">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <font size="20"/>
-              <text value="Thêm sinh viên mới"/>
+              <text value="Tạo lớp học mới"/>
             </properties>
           </component>
-          <component id="9eaa2" class="javax.swing.JButton" binding="updateButton">
+          <component id="883ea" class="javax.swing.JButton" binding="updateButton">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <font size="20"/>
-              <text value="Cập nhật thông tin"/>
+              <text value="Cập nhật thông tin lớp học"/>
             </properties>
           </component>
-          <component id="21859" class="javax.swing.JButton" binding="removeButton">
+          <component id="e83a5" class="javax.swing.JButton" binding="removeButton">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <font size="20"/>
               <foreground color="-1768704"/>
-              <text value="Xóa sinh viên"/>
+              <text value="Hủy lớp học"/>
             </properties>
           </component>
-          <component id="1a203" class="javax.swing.JButton" binding="backButton">
+          <component id="c136f" class="javax.swing.JButton" binding="backButton">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>

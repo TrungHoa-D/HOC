@@ -1,4 +1,4 @@
-package GUI.studentManger;
+package GUI.studentManager;
 
 import main.MainFunction;
 import model.Account;

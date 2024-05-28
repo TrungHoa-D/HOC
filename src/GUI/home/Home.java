@@ -20,7 +20,6 @@ public class Home {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Login.login(parentFrame);
-
             }
         });
         singupButton.addActionListener(new ActionListener() {
@@ -39,7 +38,7 @@ public class Home {
     public static void home(JFrame previousFrame) {
         JFrame frame = new JFrame("Home");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setContentPane(new Home(frame).homePanel);  // Truyền frame hiện tại vào constructor của Home
+        frame.setContentPane(new Home(frame).homePanel);
         frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);

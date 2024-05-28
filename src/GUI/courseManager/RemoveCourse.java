@@ -1,7 +1,9 @@
-package GUI.studentManger;
+package GUI.courseManager;
 
+import GUI.studentManager.StudentManagerMenu;
 import main.MainFunction;
 import model.Account;
+import model.Course;
 import model.Person;
 
 import javax.swing.*;
@@ -10,7 +12,8 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.List;
 
-public class RemoveStudent {
+public class RemoveCourse {
+    private JPanel removeCoursePanel;
     private JPanel removePanel;
     private JLabel nameLabel;
     private JPanel inputPanel;
@@ -19,43 +22,42 @@ public class RemoveStudent {
     private JButton removeButton;
     private JButton backButton;
 
-    public RemoveStudent(JFrame frame, Account account) {
+    public RemoveCourse(JFrame frame, Account account) {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                StudentManagerMenu.stuManagerMenu(frame, account);
+                CourseManagerMenu.courseMenu(frame,account);
             }
         });
         removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                List<Person> students;
+                List<Course> courseList;
                 String name = textField1.getText();
                 try {
-                    students= MainFunction.personDAO.find(name);
+                    courseList= MainFunction.courseDAO.find(name);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-                if (students.size()>0) {
+                if (courseList.size()>0) {
                     try {
-                        MainFunction.personDAO.delete(name);
-                        JOptionPane.showMessageDialog(null,"Xóa sinh viên thành công!");
-                        StudentManagerMenu.stuManagerMenu(frame, account);
+                        MainFunction.courseDAO.delete(name);
+                        JOptionPane.showMessageDialog(null,"Hủy lớp học thành công!");
+                        CourseManagerMenu.courseMenu(frame,account);
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
                 }
                 else {
-                    JOptionPane.showMessageDialog(null,"Không tìm thấy sinh viên này!");
+                    JOptionPane.showMessageDialog(null,"Không tìm thấy lớp học này!");
                 }
             }
         });
     }
-
-    public static void removeStudent(JFrame parentFrame, Account account) {
-        JFrame frame = new JFrame("Remove Student");
+    public static void deleteCourse(JFrame parentFrame, Account account) {
+        JFrame frame = new JFrame("Delete Course");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setContentPane(new RemoveStudent(frame,account).removePanel);
+        frame.setContentPane(new RemoveCourse(frame,account).removeCoursePanel);
         frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);

@@ -1,6 +1,5 @@
-package GUI.studentManger;
+package GUI.studentManager;
 
-import GUI.home.Home;
 import main.MainFunction;
 import model.Account;
 import model.Person;

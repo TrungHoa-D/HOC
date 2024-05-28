@@ -1,4 +1,4 @@
-package GUI.studentManger;
+package GUI.studentManager;
 
 import main.MainFunction;
 import model.Account;
@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UpdateStudent {
