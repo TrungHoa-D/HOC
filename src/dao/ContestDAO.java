@@ -1,7 +1,9 @@
 package dao;
 
 import model.Contest;
+import model.ContestResult;
 import model.Course;
+import model.TopContest;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -73,7 +75,8 @@ public class ContestDAO {
         }
         return list;
     }
-    public void showTop3(String name) throws SQLException{
+    public List<TopContest> showTop3(String name) throws SQLException{
+        List<TopContest> list = new ArrayList<>();
         {
             List<Contest> contests = new ArrayList<>();
             boolean right =false;
@@ -83,26 +86,29 @@ public class ContestDAO {
                 break;
             }
             if (!right) {
-                System.out.println(" Cuộc thi không tồn tại !!!");
-                return;
+                return list;
             }
         }
-        String sql = "SELECT TOP (3) PERSONAL_INFOR.person_name AS name, PERSONAL_INFOR.person_handle AS handle, PERSONAL_INFOR.person_group AS [group], PERSON_DO_CONTEST.score\n" +
+        String sql = "SELECT PERSONAL_INFOR.person_name AS name, PERSONAL_INFOR.person_handle AS handle, PERSONAL_INFOR.person_group AS [group], PERSON_DO_CONTEST.score\n" +
                 "FROM     PERSONAL_INFOR INNER JOIN\n" +
                 "                  PERSON_DO_CONTEST ON PERSONAL_INFOR.person_id = PERSON_DO_CONTEST.person_id INNER JOIN\n" +
                 "                  CONTEST ON PERSON_DO_CONTEST.contest_id = CONTEST.contest_id\n" +
-                "WHERE  (CONTEST.contest_name = ?)";
+                "WHERE  (CONTEST.contest_name = ?)"+
+                "ORDER BY PERSON_DO_CONTEST.score DESC";
         PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
         ps.setString(1,name);
         ResultSet rs = ps.executeQuery();
-        System.out.println("══════════════════ TOP 3 CONTEST "+name+" ══════════════════");
-        System.out.printf("%-30s%-20s%-10s%-15s\n","Họ và tên","Handle","Nhóm","Tổng điểm");
+        //System.out.println("══════════════════ TOP 3 CONTEST "+name+" ══════════════════");
+        //System.out.printf("%-30s%-20s%-10s%-15s\n","Họ và tên","Handle","Nhóm","Tổng điểm");
         while(rs.next()) {
-            System.out.printf("%-30s%-20s%-10d%-15d\n",rs.getString("name"),rs.getString("handle"),rs.getInt("group"),rs.getInt("score"));
+            //System.out.printf("%-30s%-20s%-10d%-15d\n",rs.getString("name"),rs.getString("handle"),rs.getInt("group"),rs.getInt("score"));
+            TopContest topContest= new TopContest(rs.getString("name"),rs.getString("handle"),rs.getInt("group"),rs.getInt("score"));
+            list.add(topContest);
         }
         ps.close();rs.close();
+        return list;
     }
-    public void showContest(int id) throws SQLException{
+    public List<ContestResult> showContest(int id) throws SQLException{
         String sql = "SELECT CONTEST.contest_name, PERSON_DO_CONTEST.score\n" +
                 "FROM     PERSON_DO_CONTEST INNER JOIN\n" +
                 "                  CONTEST ON PERSON_DO_CONTEST.contest_id = CONTEST.contest_id\n" +
@@ -110,11 +116,15 @@ public class ContestDAO {
         PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
         ps.setInt(1,id);
         ResultSet rs = ps.executeQuery();
-        System.out.println("               ═════════ DANH SÁCH CUỘC THI ĐÃ THAM GIA ═════════");
-        System.out.printf("%-50s%-20s\n","Tên cuộc thi","Điểm đạt được");
+        //System.out.println("               ═════════ DANH SÁCH CUỘC THI ĐÃ THAM GIA ═════════");
+        //System.out.printf("%-50s%-20s\n","Tên cuộc thi","Điểm đạt được");
+        List<ContestResult> list= new ArrayList<>();
         while(rs.next()) {
-            System.out.printf("%-50s%-20d\n",rs.getString("contest_name"),rs.getInt("score"));
+            //System.out.printf("%-50s%-20d\n",rs.getString("contest_name"),rs.getInt("score"));
+            ContestResult contestResult= new ContestResult(rs.getString("contest_name"),rs.getInt("score"));
+            list.add(contestResult);
         }
         ps.close();rs.close();
+        return list;
     }
 }

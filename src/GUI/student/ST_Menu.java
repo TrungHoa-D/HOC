@@ -1,7 +1,10 @@
 package GUI.student;
 
+import GUI.admin.ChangePass;
 import GUI.home.Home;
 import GUI.supporter.SP_Menu;
+import GUI.supporter.SP_ShowCourse;
+import GUI.supporter.ShowPI;
 import main.MainFunction;
 import model.Account;
 import model.Person;
@@ -38,14 +41,44 @@ public class ST_Menu {
             break;
         }
         if (you.getName() == null || you.getName().isEmpty()) {
-            wellcomeLabel.setText("Chào mừng hỗ trợ viên "+ account.getName()+ "!");
+            wellcomeLabel.setText("Chào mừng sinh viên "+ account.getName()+ "!");
         } else {
-            wellcomeLabel.setText("Chào mừng hỗ trợ viên " + you.getName() + "!");
+            wellcomeLabel.setText("Chào mừng sinh viên " + you.getName() + "!");
         }
         signOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Home.home(frame);
+            }
+        });
+        changePassButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ChangePass.changPassword(frame, account);
+            }
+        });
+        showPIButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ShowPI.showPI(frame,account);
+            }
+        });
+        classButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SP_ShowCourse.showMyCourse(frame, account);
+            }
+        });
+        contestButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ST_ShowContestResult.showContestResult(frame, account);
+            }
+        });
+        updatePIButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ST_updatePI.updatePI(frame, account);
             }
         });
     }

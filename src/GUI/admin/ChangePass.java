@@ -1,5 +1,7 @@
 package GUI.admin;
 
+import GUI.student.ST_Menu;
+import GUI.supporter.SP_Menu;
 import main.MainAccount;
 import model.Account;
 
@@ -28,7 +30,15 @@ public class ChangePass {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AccManager.accountManager(frame,account);
+                if(account.getRole().equals("admin")){
+                    AccManager.accountManager(frame,account);
+                }
+                else if(account.getRole().equals("supporter")){
+                    SP_Menu.supporterMenu(frame,account);
+                }
+                else {
+                    ST_Menu.studentMenu(frame,account);
+                }
             }
         });
 
@@ -63,7 +73,15 @@ public class ChangePass {
                             break;
                         }
                     }
-                    AccManager.accountManager(frame,newAccount);
+                    if(account.getRole().equals("admin")){
+                        AccManager.accountManager(frame,newAccount);
+                    }
+                    else if(account.getRole().equals("supporter")){
+                        SP_Menu.supporterMenu(frame,newAccount);
+                    }
+                    else {
+                        ST_Menu.studentMenu(frame,newAccount);
+                    }
                 }
             }
         });

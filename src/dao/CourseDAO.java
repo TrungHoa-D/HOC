@@ -74,7 +74,7 @@ public class CourseDAO {
         }
         return list;
     }
-    public void showCourse(int id) throws SQLException{
+    public List<Course> showCourse(int id) throws SQLException{
         String sql = "SELECT CLASS.*, ATTEND_CLASS.person_id\n" +
                 "FROM     PERSONAL_INFOR INNER JOIN\n" +
                 "                  ACC ON PERSONAL_INFOR.acc_id = ACC.acc_id INNER JOIN\n" +
@@ -84,11 +84,15 @@ public class CourseDAO {
         PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
         ps.setInt(1,id);
         ResultSet rs = ps.executeQuery();
-        System.out.println("                                               ═════════ DANH SÁCH LỚP HỌC THAM GIA ═════════");
-        System.out.printf("%-5s%-15s%-100s%-20s%-10s\n","ID","Tên","Nội dung","Ngày diễn ra","Địa điểm");
+        //System.out.println("                                               ═════════ DANH SÁCH LỚP HỌC THAM GIA ═════════");
+        //System.out.printf("%-5s%-15s%-100s%-20s%-10s\n","ID","Tên","Nội dung","Ngày diễn ra","Địa điểm");
+        List<Course> courses = new ArrayList<>();
         while(rs.next()) {
-            System.out.printf("%-5d%-15s%-100s%-20s%-10s\n",rs.getInt("class_id"),rs.getString("class_name"),rs.getString("class_content"),rs.getDate("class_day"),rs.getString("class_place"));
+            //System.out.printf("%-5d%-15s%-100s%-20s%-10s\n",rs.getInt("class_id"),rs.getString("class_name"),rs.getString("class_content"),rs.getDate("class_day"),rs.getString("class_place"));
+            Course course= new Course(rs.getInt("class_id"),rs.getString("class_name"),rs.getString("class_content"),rs.getDate("class_day"),rs.getString("class_place"));
+            courses.add(course);
         }
         ps.close();rs.close();
+        return courses;
     }
 }

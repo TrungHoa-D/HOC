@@ -1,6 +1,7 @@
 package GUI.supporter;
 
 import GUI.admin.AdminMenu;
+import GUI.admin.ChangePass;
 import GUI.home.Home;
 import main.MainFunction;
 import model.Account;
@@ -47,6 +48,48 @@ public class SP_Menu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Home.home(frame);
+            }
+        });
+        groupMemberButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SP_ShowGroupMember.readGroup(frame,account);
+            }
+        });
+        classButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SP_ShowCourse.showMyCourse(frame,account);
+            }
+        });
+        contestButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SP_FindContest.findContest(frame,account);
+            }
+        });
+        addScoreButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SP_AddScore.addScore(frame,account);
+            }
+        });
+        updatePIButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SP_updatePI.updatePI(frame,account);
+            }
+        });
+        changePassButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ChangePass.changPassword(frame,account);
+            }
+        });
+        showPIButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ShowPI.showPI(frame,account);
             }
         });
     }

@@ -142,7 +142,7 @@ public List<Person> find(String name) throws SQLException {
         }
         return list;
     }
-    public void showGroup(int group) throws SQLException{
+    public List<Person> showGroup(int group) throws SQLException{
         String sql = "SELECT PERSONAL_INFOR.*, PERSONAL_INFOR.person_group AS nhóm, ACC.acc_role\n" +
                 "FROM     PERSONAL_INFOR INNER JOIN\n" +
                 "                  ACC ON PERSONAL_INFOR.acc_id = ACC.acc_id\n" +
@@ -150,12 +150,15 @@ public List<Person> find(String name) throws SQLException {
         PreparedStatement ps = JDBCConnection.getConnection().prepareStatement(sql);
         ps.setInt(1,group);
         ResultSet rs = ps.executeQuery();
-        System.out.println("                                               ═════════ DANH SÁCH THÀNH VIÊN NHÓM "+group+" ═════════");
-        System.out.printf("%-5s%-30s%-10s%-20s%-20s%-20s%-5s%-5s%-15s%-30s\n","ID","Tên","Khóa","Handle","Mã sinh viên","SĐT","Nhóm","Điểm","Điểm khả dụng","Ghi chú");
+        //System.out.println("                                               ═════════ DANH SÁCH THÀNH VIÊN NHÓM "+group+" ═════════");
+        //System.out.printf("%-5s%-30s%-10s%-20s%-20s%-20s%-5s%-5s%-15s%-30s\n","ID","Tên","Khóa","Handle","Mã sinh viên","SĐT","Nhóm","Điểm","Điểm khả dụng","Ghi chú");
+        List<Person> list = new ArrayList<>();
         while(rs.next()) {
             Person person = new Person(rs.getInt("person_id"),rs.getString("person_name"),rs.getString("person_gen"),rs.getString("person_handle"),rs.getString("person_student_code"),rs.getInt("person_phone"),rs.getInt("person_group"),rs.getInt("person_score"),rs.getInt("person_avaiable_score"),rs.getString("note"),rs.getInt("acc_id"),rs.getInt("team_id"));
-            System.out.printf("%-5d%-30s%-10s%-20s%-20s%-20s%-5d%-5d%-15d%-30s\n",person.getId(),person.getName(),person.getGen(),person.getHandle(),person.getStudentCode(),"0"+person.getPhone(),person.getGroup(),person.getScore(),person.getAvailable_score(),person.getNote());
+            list.add(person);
+            //System.out.printf("%-5d%-30s%-10s%-20s%-20s%-20s%-5d%-5d%-15d%-30s\n",person.getId(),person.getName(),person.getGen(),person.getHandle(),person.getStudentCode(),"0"+person.getPhone(),person.getGroup(),person.getScore(),person.getAvailable_score(),person.getNote());
         }
         ps.close();rs.close();
+        return list;
     }
 }
