@@ -57,11 +57,16 @@ public class SP_AddScore {
                 }else {
                     Person selected = student.get(0);
                     if(score!= null){
-                        selected.setScore(selected.getScore()+score);
-                        selected.setAvailable_score(selected.getAvailable_score()+score);
+                        selected.setScore(Math.max(selected.getScore()+score,0));
+                        selected.setAvailable_score(Math.max(selected.getScore()+score,0));
                         try {
                             MainFunction.personDAO.update(selected);
-                            JOptionPane.showMessageDialog(frame,"Đã cộng "+score+" điểm cho sinh viên "+ selected.getName()+"!");
+                            if(selected.getScore()>0){
+                                JOptionPane.showMessageDialog(frame,"Đã cộng "+score+" điểm cho sinh viên "+ selected.getName()+"!");
+                            }
+                            else {
+                                JOptionPane.showMessageDialog(frame,"Đã "+score+" điểm cho sinh viên "+ selected.getName()+"!");
+                            }
                             SP_Menu.supporterMenu(frame,account);
                         } catch (SQLException ex) {
                             throw new RuntimeException(ex);

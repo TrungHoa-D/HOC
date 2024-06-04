@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ForgotPassword {
     private JPanel forgotPasswordPanel;
@@ -56,7 +57,7 @@ public class ForgotPassword {
                 }
                 boolean righAcc=false;
                 for(Account account:list){
-                    if (account.getId()== id && account.getName().equals(name)){
+                    if (Objects.equals(account.getId(), id) && account.getName().equals(name)){
                         righAcc=true;
                         break;
                     }
