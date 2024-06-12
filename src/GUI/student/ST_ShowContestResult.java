@@ -2,12 +2,10 @@ package GUI.student;
 
 import main.MainFunction;
 import model.Account;
-import model.ContestResult;
+import dto.ContestResult;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;

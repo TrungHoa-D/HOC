@@ -1,9 +1,8 @@
 package dao;
 
 import model.Contest;
-import model.ContestResult;
-import model.Course;
-import model.TopContest;
+import dto.ContestResult;
+import dto.TopContest;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

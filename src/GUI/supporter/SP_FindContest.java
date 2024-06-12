@@ -2,8 +2,7 @@ package GUI.supporter;
 
 import main.MainFunction;
 import model.Account;
-import model.Contest;
-import model.TopContest;
+import dto.TopContest;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
