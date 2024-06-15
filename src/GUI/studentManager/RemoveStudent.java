@@ -30,15 +30,23 @@ public class RemoveStudent {
             @Override
             public void actionPerformed(ActionEvent e) {
                 List<Person> students;
+                List<Account> accounts;
                 String name = textField1.getText();
                 try {
                     students= MainFunction.personDAO.find(name);
+                    accounts= MainFunction.accountDAO.getAccounts();
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
                 if (students.size()>0) {
                     try {
                         MainFunction.personDAO.delete(name);
+                        for (Account a : accounts) {
+                            if (a.getId().equals(students.get(0).getId())) {
+                                MainFunction.accountDAO.delete(a.getName());
+                                //System.out.println("removed: "+a.getId());
+                            }
+                        }
                         JOptionPane.showMessageDialog(null,"Xóa sinh viên thành công!");
                         StudentManagerMenu.stuManagerMenu(frame, account);
                     } catch (SQLException ex) {

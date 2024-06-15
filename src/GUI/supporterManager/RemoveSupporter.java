@@ -32,15 +32,23 @@ public class RemoveSupporter {
             @Override
             public void actionPerformed(ActionEvent e) {
                 List<Person> supporter;
+                List<Account> accounts;
                 String name = textField1.getText();
                 try {
                     supporter= MainFunction.personDAO.find(name);
+                    accounts= MainFunction.accountDAO.getAccounts();
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
                 if (!supporter.isEmpty()) {
                     try {
                         MainFunction.personDAO.delete(name);
+                        for (Account a : accounts) {
+                            if (a.getId().equals(supporter.get(0).getId())) {
+                                MainFunction.accountDAO.delete(a.getName());
+                                //System.out.println("removed: "+a.getId());
+                            }
+                        }
                         JOptionPane.showMessageDialog(null,"Xóa hỗ trợ viên thành công!");
                         SupManagerMenu.supporterManagerMenu(frame, account);
                     } catch (SQLException ex) {
