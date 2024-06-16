@@ -48,7 +48,7 @@
                 </constraints>
                 <properties>
                   <font size="20"/>
-                  <text value="Tạo lớp cuộc thi mới"/>
+                  <text value="Tạo cuộc thi mới"/>
                 </properties>
               </component>
               <component id="43dea" class="javax.swing.JButton" binding="updateButton">
